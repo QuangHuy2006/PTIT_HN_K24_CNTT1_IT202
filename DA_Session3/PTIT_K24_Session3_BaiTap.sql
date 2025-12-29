@@ -35,12 +35,15 @@ create table Score(
 insert into Student(student_id, student_name, date_of_birth, email) values
 ("ST01","Nguyễn Đăng Quang", "2006-09-04", "nguyendangquang0510@gmail.com");
 insert into Subject(subject_id, subject_name, credit) values
-("SJ01","Toán", 3);
+("SJ01","Toán", 3),
+("SJ02", "Văn", 2);
 insert into Score(student_id, subject_id, final_score) values
-("ST01","SJ01", 6.5);
+("ST01","SJ01", 6.5),
+("ST01","SJ02", 7);
 insert into Enrollment(student_id, subject_id, enroll_date) values
-("ST01","SJ01", "2025-12-29");
-update Score set final_score = 7.5 where student_id = "ST01" and subject_id = "SJ01";
+("ST01","SJ01", "2025-12-29"),
+("ST01","SJ02", "2025-12-29");
+update Score set mid_score=5, final_score = 7.5 where student_id = "ST01" and subject_id = "SJ01";
 delete from Score where student_id = "ST01" and subject_id = "SJ01";
 delete from Enrollment where student_id = "ST01" and subject_id = "SJ01";
-Select student_name, subject_name from Student, Subject, Score where Student.student_id = Score.student_id and Subject.subject_id = Score.subject_id
+Select student_name, subject_name, mid_score, final_score from Student, Subject, Score where Student.student_id = Score.student_id and Subject.subject_id = Score.subject_id
